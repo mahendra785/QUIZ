@@ -1,0 +1,36 @@
+<!-- add_question.html -->
+
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h2>Add Question</h2>
+    <form method="post">
+        {{ form.csrf_token }}
+        <div>
+            {{ form.question_text.label }}
+            {{ form.question_text }}
+        </div>
+        <div>
+            {{ form.option1.label }}
+            {{ form.option1 }}
+        </div>
+        <div>
+            {{ form.option2.label }}
+            {{ form.option2 }}
+        </div>
+        <div>
+            {{ form.option3.label }}
+            {{ form.option3 }}
+        </div>
+        <div>
+            {{ form.option4.label }}
+            {{ form.option4 }}
+        </div>
+        <div>
+            {{ form.correct_option.label }}
+            {{ form.correct_option }}
+        </div>
+        <button type="submit">Add Question</button>
+        <a href="{{ url_for('view_quiz', quiz_token=quiz_token) }}">Go to View Quiz</a>
+    </form>
+{% endblock %}

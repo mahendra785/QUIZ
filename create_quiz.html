@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <form method="post" action="{{ url_for('create_quiz') }}">
+        <label for="quiz_title">Quiz Title:</label>
+        <input type="text" id="quiz_title" name="quiz_title" required class="quiz-input"><br><br>
+
+        <div id="questions-container">
+            <div class="question-container">
+                <label for="question_1">Question 1:</label>
+                <input type="text" id="question_1" name="question_1" required class="question-input"><br>
+                <label for="option_1_1">Option 1:</label>
+                <input type="text" id="option_1_1" name="option_1_1" required class="option-input"><br>
+                <label for="option_1_2">Option 2:</label>
+                <input type="text" id="option_1_2" name="option_1_2" required class="option-input"><br>
+                <label for="option_1_3">Option 3:</label>
+                <input type="text" id="option_1_3" name="option_1_3" required class="option-input"><br>
+                <label for="option_1_4">Option 4:</label>
+                <input type="text" id="option_1_4" name="option_1_4" required class="option-input"><br>
+                Correct Option:
+                <select name="correct_option_1" id="correct_option_1" required class="correct-option-input">
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                    <option value="4">Option 4</option>
+                </select><br><br>
+            </div>
+        </div>
+
+     <!-- create_quiz.html -->
+
+<!-- Your existing content -->
+
+{% block content %}
+<form method="post">
+    <!-- Your existing form fields -->
+
+    <!-- Button to add a new question -->
+    <button type="submit" name="add_question" value="true">Add Question</button>
+
+    <!-- Your existing form fields -->
+
+    <button type="submit">Create Quiz</button>
+</form>
+{% endblock %}
+
+    </form>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

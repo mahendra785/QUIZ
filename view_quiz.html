@@ -1,0 +1,26 @@
+<!-- view_quiz.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Quiz</title>
+</head>
+<body>
+    <h1>{{ quiz.title }}</h1>
+    
+    <h2>Questions</h2>
+    {% for question in questions %}
+        <p>{{ question.question }}</p>
+        <ul>
+            <li>{{ question.option1 }}</li>
+            <li>{{ question.option2 }}</li>
+            <li>{{ question.option3 }}</li>
+            <li>{{ question.option4 }}</li>
+        </ul>
+        <p>Correct Option: {{ question.correct_option }}</p>
+    {% endfor %}
+</body>
+</html>

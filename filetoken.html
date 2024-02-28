@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Questions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>{{ quiz['title'] }}</h1>
+    <div id="quiz-container">
+        <form method="post" action="{{ url_for('evaluate_quiz') }}">
+            <input type="hidden" name="quiz_token" value="{{ quiz['token'] }}">
+            {% for question in questions %}
+                <fieldset>
+                    <legend>{{ question['question'] }}</legend>
+                    {% for option in ['option1', 'option2', 'option3', 'option4'] %}
+                        <label>
+                            <input type="radio" name="question_{{ question['id'] }}" value="{{ loop.index }}">
+                            {{ question[option] }}
+                        </label><br>
+                    {% endfor %}
+                </fieldset>
+            {% endfor %}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

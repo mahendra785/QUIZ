@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take Quiz</title>
+</head>
+<body>
+    <h1>Take Quiz</h1>
+    <div class="btn-2"><a href="{{ url_for('take_quiz_route', quiz_token='your_quiz_token_here') }}">Take Quiz</a></div>
+
+
+        {% for question in questions %}
+        <fieldset>
+            <legend>{{ question['question'] }}</legend>
+            {% for option in ['option1', 'option2', 'option3', 'option4'] %}
+            <label>
+                <input type="radio" name="question_{{ question['id'] }}" value="{{ loop.index }}">
+                {{ question[option] }}
+            </label><br>
+            {% endfor %}
+        </fieldset>
+        {% endfor %}
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
